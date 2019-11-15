@@ -1,0 +1,4 @@
+最新記事のお知らせです。
+
+{{ post.title }}
+{{ request.scheme }}://{{ request.get_host }}{% url 'nblog1:post_detail' post.pk %}

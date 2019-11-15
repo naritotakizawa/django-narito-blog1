@@ -1,0 +1,41 @@
+{% load static %}
+<p id="subscribe-lead">幾つかの方法で、ブログの更新を受け取れます。</p>
+<div>
+    <h3 class="section-title">Feed</h3>
+    <p><a href="{% url 'nblog1:rss' %}">RSS</a></p>
+    <p><a href="{% url 'nblog1:atom' %}">Atom</a></p>
+</div>
+
+<div>
+    <h3 class="section-title">Email</h3>
+    <form action="{% url 'nblog1:subscribe_email' %}" method="POST" id="subscribe-form">
+        {{ subscribe_email_form.mail }}
+        <div id="email-errors"></div>
+        <button type="submit" id="subscribe-button">購読</button>
+        {% csrf_token %}
+    </form>
+</div>
+
+{% if USE_LINE_BOT %}
+    <div>
+        <h3 class="section-title">Line</h3>
+        <p><img class="qr" src="{% static 'nblog1/lineqr.png' %}" title="QRを読み取ると登録されます"></p>
+    </div>
+{% endif %}
+
+{% if USE_WEB_PUSH %}
+    <link rel="manifest" href="/manifest.json"/>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(function () {
+            OneSignal.init({
+                appId: '{{ ONE_SIGNAL_APP_ID }}',
+            });
+        });
+    </script>
+    <div>
+        <h3 class="section-title">Web Push</h3>
+        <div class='onesignal-customlink-container'></div>
+    </div>
+{% endif %}

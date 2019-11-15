@@ -1,0 +1,3 @@
+記事「{{ post.title }}」 のコメントに返信がありました。
+以下のURLからご確認ください。
+{{ request.scheme }}://{{ request.get_host }}{% url 'nblog1:post_detail' post.pk %}

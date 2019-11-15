@@ -1,0 +1,5 @@
+メール通知の申し込みありがとうございます。
+以下のURLにアクセスすると、通知登録が完了します。
+{{ request.scheme }}://{{ request.get_host }}{% url 'nblog1:subscribe_email_register' token %}
+
+メールの通知が不要になったら、このメールアドレスをブロックしてください。

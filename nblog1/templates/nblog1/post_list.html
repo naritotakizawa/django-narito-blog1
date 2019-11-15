@@ -1,0 +1,56 @@
+{% extends 'nblog1/base_site.html' %}
+{% load nblog1 %}
+{% load humanize %}
+{% block meta_title %}記事一覧 - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <form id="search-form" action="" method="GET">
+        {{ search_form.key_word }}
+        <button type="submit" id="search-button">検索</button>
+        <div class="inline-checkbox">
+            {{ search_form.tags }}
+        </div>
+    </form>
+
+    <section>
+        {% if search_form.cleaned_data.tags %}
+            <p class="tags" id="select-tags">選択しているタグ: {% for tag in search_form.cleaned_data.tags %}
+                <span class="tag" data-pk="{{ tag.pk }}">{{ tag.name }}</span>{% endfor %}</p>
+        {% endif %}
+        {% for post in post_list %}
+            <article class="post">
+                <h2 class="post-title"><a href="{% url 'nblog1:post_detail' post.pk %}">{{ post.title }}</a></h2>
+                <p class="description">{{ post.description }}</p>
+                <div>
+                    <time class="updated_at"
+                          datetime="{{ post.updated_at | date:'Y-m-d' }}">{{ post.updated_at | naturaltime }}に更新
+                    </time>
+
+                    {% for tag in post.tags.all %}
+                        <span class="tag" data-pk="{{ tag.pk }}">{{ tag.name }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+
+        {% empty %}
+            <p class="post">まだ記事がありません。</p>
+        {% endfor %}
+    </section>
+
+    <nav id="page">
+        <!-- 1つ前 の部分 -->
+        {% if page_obj.has_previous %}
+            <a class="page-link" href="?{% url_replace request 'page' page_obj.previous_page_number %}"
+               title="前ページへ">前へ</a>
+        {% endif %}
+
+        <!-- 1/3 の部分 -->
+        <span>{{ page_obj.paginator.num_pages }}ページ中{{ page_obj.number }}ページ目（全{{ page_obj.paginator.count }}件）</span>
+
+        <!-- 1つ後 の部分 -->
+        {% if page_obj.has_next %}
+            <a class="page-link" href="?{% url_replace request 'page' page_obj.next_page_number %}" title="次ページへ">次へ</a>
+        {% endif %}
+    </nav>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'nblog1/base_site.html' %}
+
+{% block content %}
+    <form action="" method="POST" id="comment-form">
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <div class="field">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.help_text %}
+                    <span class="helptext">※{{ field.help_text }}</span>
+                {% endif %}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        {% csrf_token %}
+
+        <button type="submit">送信</button>
+        <a class="button" href="{% url 'nblog1:post_detail' post.pk %}">送信せずに戻る</a>
+    </form>
+
+{% endblock %}

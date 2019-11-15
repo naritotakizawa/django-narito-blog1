@@ -1,0 +1,16 @@
+<input type="text" id="{{ widget.name }}-input" data-target="{{ widget.name }}"
+       autocomplete="off" {% include "django/forms/widgets/attrs.html" %}>
+
+<ul id="{{ widget.name }}-list" class="dropdown"></ul>
+
+<div id="{{ widget.name }}-display">
+    {% for group, options, index in widget.optgroups %}{% for option in options %}{% if option.selected %}
+        <p class="suggest-item" data-target="{{ widget.name }}" data-pk="{{ option.value }}">{{ option.label }}</p>
+    {% endif %}{% endfor %}{% endfor %}
+</div>
+
+<div id="{{ widget.name }}-values">
+    {% for value in widget.value %}
+        <input type="hidden" name="{{ widget.name }}" value="{{ value }}">
+    {% endfor %}
+</div>

@@ -1,6 +1,6 @@
 .idea/
 project/
-templates/
+/templates/
 media/
 manage.py
 

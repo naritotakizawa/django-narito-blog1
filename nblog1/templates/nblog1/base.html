@@ -1,0 +1,142 @@
+{% load static %}
+{% load nblog1 %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <title>{% block meta_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'nblog1/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Ubuntu|Ubuntu+Condensed|Ubuntu+Mono&display=swap" rel="stylesheet">
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+
+<header id="site-header">
+    <a href="{% url 'nblog1:top' %}" id="header-title">{% block title %}{% endblock %}</a>
+</header>
+
+
+<main>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+<footer id="site-footer">
+    <div class="container" id="footer-container">
+        {% render_subscribe_section %}
+
+        <hr>
+        <ul class="inline-ul">
+            {% block link %}{% endblock %}
+        </ul>
+        <p id="copyright">{% block copyright %}{% endblock %}</p>
+
+
+    </div>
+</footer>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72333380-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-72333380-3');
+</script>
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', e => {
+
+        const searchForm = document.getElementById('search-form');
+
+        for (const tag of document.getElementsByClassName('tag')) {
+            tag.addEventListener('click', () => {
+                const pk = tag.dataset.pk;
+                const checkbox = document.querySelector(`input[name="tags"][value="${pk}"]`);
+                if (checkbox.checked) {
+                    checkbox.checked = false;
+                } else {
+                    checkbox.checked = true;
+                }
+                searchForm.submit();
+            });
+        }
+
+        for (const check of document.getElementsByName('tags')) {
+            check.addEventListener('change', () => {
+                searchForm.submit();
+            });
+        }
+
+        const getCookie = name => {
+            if (document.cookie && document.cookie !== '') {
+                for (const cookie of document.cookie.split(';')) {
+                    const [key, value] = cookie.trim().split('=');
+                    if (key === name) {
+                        return decodeURIComponent(value);
+                    }
+                }
+            }
+        };
+
+        const csrftoken = getCookie('csrftoken');
+        const subscribeForm = document.getElementById('subscribe-form');
+        const emailErrorArea = document.getElementById('email-errors');
+
+        // 購読ボタンで呼ばれる
+        subscribeForm.addEventListener('submit', e => {
+            // デフォルトのイベントをキャンセルし、ページ遷移しないように!
+            e.preventDefault();
+
+            emailErrorArea.innerHTML = '';
+
+            const url = subscribeForm.action;
+            const mail = encodeURIComponent(document.getElementById('id_mail').value);
+            fetch(url, {
+                method: 'POST',
+                body: `mail=${mail}`,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+                    'X-CSRFToken': csrftoken,
+                },
+            }).then(response => {
+                if (response.ok) {
+                    response.json().then(response => {
+                        const p = document.createElement('p');
+                        p.classList.add('helptext');
+                        p.textContent = response.message;
+                        emailErrorArea.append(p);
+                        document.getElementById('id_mail').disabled = true;
+                        document.getElementById('subscribe-button').disabled = true;
+                    });
+
+                } else {
+                    response.json().then(response => {
+                        for (const emailError of response.mail) {
+                            const p = document.createElement('p');
+                            p.classList.add('helptext');
+                            p.textContent = emailError.message;
+                            emailErrorArea.append(p);
+                        }
+                    });
+                }
+            }).catch(error => {
+                console.log(error);
+            });
+        });
+
+    })
+    ;
+</script>
+</body>
+</html>
