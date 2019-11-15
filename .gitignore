@@ -1,3 +1,9 @@
+.idea/
+project/
+templates/
+media/
+manage.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

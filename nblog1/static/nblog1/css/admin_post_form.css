@@ -1,0 +1,24 @@
+ul.dropdown {
+  display: none;
+  list-style-type: none;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+}
+ul.dropdown li {
+  margin: 3px;
+  cursor: pointer;
+}
+ul.dropdown li:hover {
+  opacity: 0.5;
+}
+
+.suggest-item {
+  cursor: pointer;
+  color: #333;
+}
+
+.suggest-item:hover {
+  opacity: 0.5;
+}
