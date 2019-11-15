@@ -10,6 +10,14 @@ body {
     color: #333;
     font-family: "Ubuntu", "Noto Sans JP", sans-serif;
     letter-spacing: 0.05em;
+    font-size: 14px;
+}
+
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
 }
 
 code {
