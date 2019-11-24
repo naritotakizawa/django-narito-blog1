@@ -21,7 +21,6 @@ body {
 
 code {
     font-family: 'Ubuntu Mono', monospace;
-    letter-spacing: 0;
 }
 
 img {
@@ -105,19 +104,18 @@ button[type=submit]:hover, button[type=button]:hover, a.button:hover {
 
 /* コンテナ */
 .container {
-    padding: 0 10px;
+    margin: 0 10px;
 }
 
 @media (min-width: 768px) {
     .container {
-        padding: 0 40px;
+        margin: 0 40px;
     }
 }
 
 @media (min-width: 1024px) {
     .container {
-        box-sizing: border-box;
-        width: 1024px;
+        width: 960px;
         margin: 0 auto;
     }
 }
@@ -249,15 +247,18 @@ main {
 
 /* ヘッダー */
 #site-header {
-    text-align: center;
-    padding: 40px 0;
-    background-color: #00809d;
+    margin-top: 40px;
+    text-align: right;
 }
 
 #header-title {
-    font-size: 60px;
-    font-family: "Ubuntu Condensed", sans-serif;
-    color: #fff;
+    font-family: "Ubuntu Condensed", "Noto Sans JP", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#header-container {
+    border-bottom: solid 1px #00809d;
 }
 
 /* フッター */
@@ -322,6 +323,7 @@ main {
 /* 検索フォーム */
 #search-form {
     margin-bottom: 40px;
+    text-align: right;
 }
 
 .inline-checkbox {
@@ -353,6 +355,7 @@ main {
  */
 #back {
     margin-bottom: 40px;
+    text-align: right;
 }
 
 /* マークダウン関連 */
