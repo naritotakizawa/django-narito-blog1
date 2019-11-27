@@ -101,6 +101,7 @@ button[type=submit]:hover, button[type=button]:hover, a.button:hover {
 button.btn-link, a.btn-link {
     border: none;
     color: #00809d;
+    vertical-align: initial;
 }
 
 /*
