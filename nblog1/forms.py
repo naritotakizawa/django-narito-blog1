@@ -43,7 +43,7 @@ class CommentCreateForm(forms.ModelForm):
         fields = ('name', 'text', 'email')
         widgets = {
             'text': forms.Textarea(
-                attrs={'placeholder': '文章を書いたり\n\nhttps://narito.ninja/\n\nリンクも張れます'}
+                attrs={'placeholder': 'マークダウンに対応しています。\n\n```python\nprint("コードはこのような感じで書く")\n```\n\n[リンクテキスト](https://narito.ninja/)\n\n![画像alt](画像URL)'}
             )
         }
 
@@ -57,7 +57,7 @@ class ReplyCreateForm(forms.ModelForm):
         fields = ('name', 'text')
         widgets = {
             'text': forms.Textarea(
-                attrs={'placeholder': '文章を書いたり\n\nhttps://narito.ninja/\n\nリンクも張れます'}
+                attrs={'placeholder': 'マークダウンに対応しています。\n\n```python\nprint("コードはこのような感じで書く")\n```\n\n[リンクテキスト](https://narito.ninja/)\n\n![画像alt](画像URL)'}
             )
         }
 

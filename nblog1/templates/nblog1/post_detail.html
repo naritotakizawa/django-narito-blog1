@@ -62,8 +62,8 @@
                 <h3>{{ comment.name }}</h3>
                 <time class="updated_at"
                       datetime="{{ comment.created_at | date:'Y-m-d' }}">{{ comment.created_at | naturaltime }}</time>
-                <div class="description">
-                    {{ comment.text | linebreaks | urlize }}
+                <div class="description markdown-body">
+                    {{ comment.text | markdown_to_html_with_escape}}
                 </div>
                 <p>
                     <a href="{% url 'nblog1:reply_create' comment.pk %}" target="_blank"
@@ -79,7 +79,7 @@
                     <time class="updated_at"
                           datetime="{{ reply.created_at | date:'Y-m-d' }}">{{ reply.created_at | naturaltime }}</time>
                     <div class="description">
-                        {{ reply.text | linebreaks | urlize }}
+                        {{ reply.text | markdown_to_html_with_escape }}
                     </div>
                 </div>
             {% endfor %}
