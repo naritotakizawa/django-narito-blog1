@@ -230,7 +230,6 @@ h2.post-title, h3.post-title {
 .section-title {
     font-size: 24px;
     font-weight: bold;
-    font-family: "Ubuntu Condensed", sans-serif;
 }
 
 .inline-ul {
@@ -259,7 +258,6 @@ main {
 }
 
 #header-title {
-    font-family: "Ubuntu Condensed", "Noto Sans JP", sans-serif;
     font-size: 24px;
     font-weight: bold;
 }
