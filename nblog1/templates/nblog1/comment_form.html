@@ -15,8 +15,8 @@
         {% endfor %}
         {% csrf_token %}
 
-        <button type="submit">送信</button>
-        <a class="button" href="{% url 'nblog1:post_detail' post.pk %}">送信せずに戻る</a>
+        <button type="submit" class="btn-link">送信</button>
+        <a class="button btn-link" href="{% url 'nblog1:post_detail' post.pk %}">送信せずに戻る</a>
     </form>
 
 {% endblock %}
