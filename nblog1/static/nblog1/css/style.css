@@ -138,6 +138,8 @@ button.btn-link, a.btn-link {
 }
 
 .custom-checkbox-label {
+    height: 24px;
+    box-sizing: border-box;
     display: inline-block;
     border-radius: 20px;
     text-align: center;
