@@ -98,6 +98,11 @@ button[type=submit]:hover, button[type=button]:hover, a.button:hover {
     opacity: 0.5;
 }
 
+button.btn-link, a.btn-link {
+    border: none;
+    color: #00809d;
+}
+
 /*
 ユーティリティー
 */
@@ -160,11 +165,6 @@ button[type=submit]:hover, button[type=button]:hover, a.button:hover {
 .field > * {
     display: block;
     width: 100%;
-}
-
-.btn-link {
-    border: none;
-    color: #00809d;
 }
 
 
