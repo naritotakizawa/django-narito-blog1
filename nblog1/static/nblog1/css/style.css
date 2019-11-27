@@ -60,7 +60,7 @@ blockquote {
 input[type=text], input[type=email], input[type=number],
 select, textarea {
     font-size: 14px;
-    padding: 0 16px;
+    padding: 0 8px;
     box-sizing: border-box;
     border-radius: 4px;
     border: solid 1px #ccc;
@@ -72,7 +72,7 @@ input[type=text], input[type=email], input[type=number] {
     height: 24px;
 }
 
-button[type=submit], button[type=button], a.button {
+button, a.button {
     height: 24px;
     font-size: 14px;
     -webkit-appearance: none;
@@ -94,7 +94,7 @@ button[type=submit], button[type=button], a.button {
     cursor: pointer;
 }
 
-button[type=submit]:hover, button[type=button]:hover, a.button:hover {
+button:hover, a.button:hover {
     opacity: 0.5;
 }
 
@@ -167,7 +167,6 @@ button.btn-link, a.btn-link {
     display: block;
     width: 100%;
 }
-
 
 /* 記事関連 */
 .post {
