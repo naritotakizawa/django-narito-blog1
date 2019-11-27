@@ -69,11 +69,11 @@ select, textarea {
 }
 
 input[type=text], input[type=email], input[type=number] {
-    height: 27px;
+    height: 24px;
 }
 
 button[type=submit], button[type=button], a.button {
-    height: 27px;
+    height: 24px;
     font-size: 14px;
     -webkit-appearance: none;
     padding: 0 16px;
@@ -144,7 +144,7 @@ button.btn-link, a.btn-link {
     text-decoration: none;
     border: solid 1px #ccc;
     transition: 0.25s;
-    padding: 4px 16px;
+    padding: 3px 16px;
     cursor: pointer;
     font-size: 14px;
     margin: 3px;
@@ -171,7 +171,7 @@ button.btn-link, a.btn-link {
 
 /* 記事関連 */
 .post {
-    margin-bottom: 54px;
+    margin-bottom: 48px;
     position: relative;
 }
 
@@ -247,13 +247,13 @@ h2.post-title, h3.post-title {
 */
 /* メインコンテンツラッパー */
 main {
-    padding: 54px 0;
+    padding: 48px 0;
     min-height: 40vh;
 }
 
 /* ヘッダー */
 #site-header {
-    margin-top: 54px;
+    margin-top: 48px;
     text-align: right;
 }
 
@@ -270,7 +270,7 @@ main {
 /* フッター */
 #site-footer {
     background-color: #00809d;
-    padding: 54px 0;
+    padding: 48px 0;
     color: #fff;
 }
 
@@ -287,7 +287,7 @@ main {
 }
 
 #footer-container > div {
-    margin-bottom: 54px;
+    margin-bottom: 48px;
 }
 
 @media (min-width: 1024px) {
@@ -328,7 +328,7 @@ main {
 */
 /* 検索フォーム */
 #search-form {
-    margin-bottom: 54px;
+    margin-bottom: 48px;
     text-align: right;
 }
 
@@ -352,7 +352,7 @@ main {
 
 /* 選択したタグエリア */
 #select-tags {
-    margin-bottom: 54px;
+    margin-bottom: 48px;
     font-size: 14px;
 }
 
@@ -360,7 +360,7 @@ main {
 記事詳細ページ
  */
 #back {
-    margin-bottom: 54px;
+    margin-bottom: 48px;
     text-align: right;
 }
 
@@ -391,7 +391,7 @@ main {
 
 /* コメント欄 */
 .comment, .reply {
-    margin-top: 54px;
+    margin-top: 48px;
 }
 
 .comment > h3, .reply > h3 {
