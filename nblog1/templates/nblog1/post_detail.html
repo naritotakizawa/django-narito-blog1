@@ -78,7 +78,7 @@
                     <h3>{{ reply.name }}</h3>
                     <time class="updated_at"
                           datetime="{{ reply.created_at | date:'Y-m-d' }}">{{ reply.created_at | naturaltime }}</time>
-                    <div class="description">
+                    <div class="description markdown-body">
                         {{ reply.text | markdown_to_html_with_escape }}
                     </div>
                 </div>
