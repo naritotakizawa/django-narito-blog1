@@ -23,6 +23,10 @@ code {
     font-family: 'Ubuntu Mono', monospace;
 }
 
+strong {
+    background-color: yellow;
+}
+
 img {
     max-width: 100%;
     height: auto;
