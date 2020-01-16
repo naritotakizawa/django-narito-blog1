@@ -8,7 +8,7 @@
 
 body {
     color: #333;
-    font-family: "Ubuntu", "Noto Sans JP", sans-serif;
+    font-family:  neue-haas-grotesk-text, noto-sans-cjk-jp, sans-serif;
     font-size: 14px;
 }
 
@@ -17,10 +17,6 @@ body {
     body {
         font-size: 16px;
     }
-}
-
-code {
-    font-family: 'Ubuntu Mono', monospace;
 }
 
 strong {
