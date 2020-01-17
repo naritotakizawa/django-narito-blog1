@@ -326,7 +326,6 @@ main {
 /* 検索フォーム */
 #search-form {
     margin-bottom: 48px;
-    text-align: right;
 }
 
 .inline-checkbox {
@@ -358,7 +357,6 @@ main {
  */
 #back {
     margin-bottom: 48px;
-    text-align: right;
 }
 
 /* マークダウン関連 */
