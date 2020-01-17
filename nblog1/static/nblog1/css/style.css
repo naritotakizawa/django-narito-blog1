@@ -60,7 +60,7 @@ blockquote {
 input[type=text], input[type=email], input[type=number],
 select, textarea {
     font-size: 14px;
-    padding: 0 8px;
+    padding: 4px 8px;
     box-sizing: border-box;
     border-radius: 4px;
     border: solid 1px #ccc;
@@ -68,15 +68,10 @@ select, textarea {
     font-family: "Ubuntu", "Noto Sans JP", sans-serif;
 }
 
-input[type=text], input[type=email], input[type=number] {
-    height: 24px;
-}
-
 button, a.button {
-    height: 24px;
     font-size: 14px;
     -webkit-appearance: none;
-    padding: 0 16px;
+    padding: 4px 16px;
     border-radius: 4px;
     background-color: #fff;
     border: solid 1px #ccc;
@@ -138,15 +133,14 @@ button.btn-link, a.btn-link {
 }
 
 .custom-checkbox-label {
-    height: 24px;
     box-sizing: border-box;
     display: inline-block;
-    border-radius: 20px;
+    border-radius: 4px;
     text-align: center;
     text-decoration: none;
     border: solid 1px #ccc;
     transition: 0.25s;
-    padding: 3px 16px;
+    padding: 4px 16px;
     cursor: pointer;
     font-size: 14px;
     margin: 3px;
