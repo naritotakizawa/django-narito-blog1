@@ -24,13 +24,6 @@
 </head>
 <body>
 
-<header id="site-header">
-    <div class="container" id="header-container">
-        <a href="{% url 'nblog1:top' %}" id="header-title">{% block title %}{% endblock %}</a>
-    </div>
-</header>
-
-
 <main>
     <div class="container">
         {% block content %}{% endblock %}

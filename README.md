@@ -73,33 +73,6 @@ urlpatterns += static(
 )
 ```
 
-`nblog1`に組み込みのサイトマップクラスを利用することもできます。気に入らなければ、自分でサイトマッククラスを作成することもできます。
-```python
-from django.conf import settings
-from django.contrib import admin
-from django.contrib.sitemaps.views import sitemap
-from django.urls import path, include
-from django.conf.urls.static import static
-from nblog1.sitemaps import BlogSitemap, PostSitemap
-
-sitemaps = {
-    'posts': PostSitemap,
-    'blog': BlogSitemap,
-}
-
-urlpatterns = [
-    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
-    path('admin/', admin.site.urls),
-    path('', include('nblog1.urls')),
-]
-
-
-# 開発環境でのメディアファイルの配信設定
-urlpatterns += static(
-    settings.MEDIA_URL,
-    document_root=settings.MEDIA_ROOT
-)
-```
 
 マイグレートやスーパーユーザーを作成する。
 
@@ -116,8 +89,6 @@ python manage.py createsuperuser
 {% block meta_title %}Narito Blog{% endblock %}
 {% block meta_description %}Python/Djangoを中心に、プログラミングのメモや備忘録、チュートリアルを書いています。{% endblock %}
 {% block meta_keywords %}Python,Django,プログラミング,ブログ{% endblock %}
-
-{% block title %}Narito Blog{% endblock %}
 
 {% block copyright %}© 2019 Narito Takizawa.{% endblock %}
 {% block link %}
