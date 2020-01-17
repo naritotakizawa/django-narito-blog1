@@ -7,7 +7,7 @@
 {% block meta_keywords %}{{ post.keywords }}{% endblock %}
 
 {% block content %}
-    <nav id="back"><a href="{% get_return_link request %}">戻る</a></nav>
+    <nav id="back"><a href="{% url 'nblog1:top' %}">TOPへ戻る</a></nav>
     <article class="post" id="post-detail">
         <h1 class="post-title">
             {% if user.is_authenticated %}
