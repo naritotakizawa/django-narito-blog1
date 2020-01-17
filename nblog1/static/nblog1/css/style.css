@@ -253,13 +253,17 @@ main {
 
 /* ヘッダー */
 #site-header {
-    margin-top: 48px;
-    text-align: right;
+    height: 48px;
+    background-color: #00809d;
+    display: grid;
+    align-items: center;
 }
+
 
 #header-title {
     font-size: 24px;
     font-weight: bold;
+    color: #fff;
 }
 
 #header-container {
