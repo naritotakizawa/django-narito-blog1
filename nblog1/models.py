@@ -34,10 +34,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def get_thumbnail(self):
-        for match in re.finditer('https?://.*\.(?:jpg|jpeg|gif|png|PNG|GIF|JPEG|JPG)', self.text):
-            return match.group()
-
     def line_push(self, request):
         """記事をラインで通知"""
         if settings.USE_LINE_BOT:
