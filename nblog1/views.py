@@ -1,6 +1,5 @@
 import json
 from django.conf import settings
-from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import EmailMessage
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
@@ -88,7 +87,6 @@ class CommentCreate(generic.CreateView):
         comment.target = post
         comment.request = self.request
         comment.save()
-        messages.info(self.request, 'コメントしました。')
         return redirect('nblog1:post_detail', pk=post_pk)
 
     def get_context_data(self, **kwargs):
@@ -110,7 +108,6 @@ class ReplyCreate(generic.CreateView):
         reply.target = comment
         reply.request = self.request
         reply.save()
-        messages.info(self.request, '返信しました。')
         return redirect('nblog1:post_detail', pk=comment.target.pk)
 
     def get_context_data(self, **kwargs):
