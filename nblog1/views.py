@@ -54,6 +54,7 @@ class PublicPostIndexView(generic.ListView):
 
 class PrivatePostIndexView(LoginRequiredMixin, PublicPostIndexView):
     """非公開の記事一覧を表示する。"""
+    raise_exception = False
 
     def get_queryset(self):
         return self._get_queryset().filter(is_public=False)
