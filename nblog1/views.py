@@ -21,8 +21,9 @@ class PublicPostIndexView(generic.ListView):
     """公開記事の一覧を表示する。"""
     paginate_by = 10
     model = Post
+    queryset = Post.objects.filter(is_public=True)
 
-    def _get_queryset(self):
+    def get_queryset(self):
         queryset = super().get_queryset()
         self.form = form = PostSearchForm(self.request.GET or None)
         if form.is_valid():
@@ -42,9 +43,6 @@ class PublicPostIndexView(generic.ListView):
         queryset = queryset.order_by('-updated_at').prefetch_related('tags')
         return queryset
 
-    def get_queryset(self):
-        return self._get_queryset().filter(is_public=True)
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['search_form'] = self.form
@@ -54,9 +52,7 @@ class PublicPostIndexView(generic.ListView):
 class PrivatePostIndexView(LoginRequiredMixin, PublicPostIndexView):
     """非公開の記事一覧を表示する。"""
     raise_exception = True
-
-    def get_queryset(self):
-        return self._get_queryset().filter(is_public=False)
+    queryset = Post.objects.filter(is_public=False)
 
 
 class PostDetailView(generic.DetailView):
