@@ -319,8 +319,6 @@ main {
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    grid-column: 3;
-    align-self: center;
     padding: 0;
 }
 
