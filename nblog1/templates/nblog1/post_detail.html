@@ -22,7 +22,7 @@
             </time>
 
             {% for tag in post.tags.all %}
-                <span class="tag-no-click" data-pk="{{ tag.pk }}">{{ tag.name }}</span>
+                <span class="tag-no-click">{{ tag.name }}</span>
             {% endfor %}
         </div>
 
