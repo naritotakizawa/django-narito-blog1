@@ -40,7 +40,7 @@ class CommentCreateForm(forms.ModelForm):
 
     class Meta:
         model = Comment
-        fields = ('name', 'text', 'email')
+        exclude = ('target', 'created_at')
         widgets = {
             'text': forms.Textarea(
                 attrs={'placeholder': 'マークダウンに対応しています。\n\n```python\nprint("コードはこのような感じで書く")\n```\n\n[リンクテキスト](https://narito.ninja/)\n\n![画像alt](画像URL)'}
@@ -54,7 +54,7 @@ class ReplyCreateForm(forms.ModelForm):
 
     class Meta:
         model = Reply
-        fields = ('name', 'text')
+        exclude = ('target', 'created_at')
         widgets = {
             'text': forms.Textarea(
                 attrs={'placeholder': 'マークダウンに対応しています。\n\n```python\nprint("コードはこのような感じで書く")\n```\n\n[リンクテキスト](https://narito.ninja/)\n\n![画像alt](画像URL)'}
