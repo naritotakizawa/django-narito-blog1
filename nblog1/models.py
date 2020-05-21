@@ -42,7 +42,7 @@ class Post(models.Model):
             context = {
                 'post': self,
             }
-            message = render_to_string('nblog1/mail/send_latest_notify_message.txt', context, request)
+            message = render_to_string('nblog1/mail/send_latest_notify_line_message.txt', context, request)
             line_bot_api = linebot.LineBotApi(settings.LINE_BOT_API_KEY)
             for push in LinePush.objects.all():
                 line_bot_api.push_message(push.user_id, messages=TextSendMessage(text=message))
@@ -55,8 +55,8 @@ class Post(models.Model):
                 'post': self,
                 'token': dumps(mail_push.pk),
             }
-            subject = render_to_string('nblog1/mail/send_latest_notify_subject.txt', context, request)
-            message = render_to_string('nblog1/mail/send_latest_notify_message.txt', context, request)
+            subject = render_to_string('nblog1/mail/send_latest_notify_email_subject.txt', context, request)
+            message = render_to_string('nblog1/mail/send_latest_notify_email_message.txt', context, request)
             to = [mail_push]
             email = EmailMessage(subject, message, from_email, to)
             email.send()
