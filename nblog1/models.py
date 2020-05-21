@@ -57,7 +57,7 @@ class Post(models.Model):
             }
             subject = render_to_string('nblog1/mail/send_latest_notify_email_subject.txt', context, request)
             message = render_to_string('nblog1/mail/send_latest_notify_email_message.txt', context, request)
-            to = [mail_push]
+            to = [mail_push.mail]
             email = EmailMessage(subject, message, from_email, to)
             email.send()
 
