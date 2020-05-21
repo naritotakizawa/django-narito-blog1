@@ -1,0 +1,8 @@
+{% extends 'nblog1/base_site.html' %}
+{% load humanize %}
+{% block meta_title %}メール購読の解除 - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <p>ブログのメール購読を解除しました。</p>
+    <p><a href="{% url 'nblog1:top' %}">TOPへ戻る</a></p>
+{% endblock %}

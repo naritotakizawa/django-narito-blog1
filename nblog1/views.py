@@ -140,7 +140,7 @@ def subscribe_email(request):
 def subscribe_email_register(request, token):
     """メール購読の確認処理"""
     try:
-        user_pk = loads(token, max_age=60*60*24)  # 1日以内
+        user_pk = loads(token, max_age=60 * 60 * 24)  # 1日以内
 
     # 期限切れ
     except SignatureExpired:
@@ -166,9 +166,36 @@ def subscribe_email_register(request, token):
     return HttpResponseBadRequest()
 
 
+def subscribe_email_release(request, token):
+    """メール購読の解除処理"""
+    try:
+        user_pk = loads(token)
+
+    # tokenが間違っている
+    except BadSignature:
+        return HttpResponseBadRequest()
+
+    # tokenは問題なし
+    else:
+        try:
+            push = EmailPush.objects.get(pk=user_pk)
+        except EmailPush.DoesNotExist:
+            return HttpResponseBadRequest()
+        else:
+            push.delete()
+            return redirect('nblog1:subscribe_email_release_done')
+
+    return HttpResponseBadRequest()
+
+
 def subscribe_email_done(request):
     """メール購読完了"""
     return render(request, 'nblog1/subscribe_email_done.html')
+
+
+def subscribe_email_release_done(request):
+    """メール購読解除の完了"""
+    return render(request, 'nblog1/subscribe_email_release_done.html')
 
 
 @csrf_exempt

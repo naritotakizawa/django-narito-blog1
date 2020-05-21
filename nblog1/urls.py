@@ -12,7 +12,9 @@ urlpatterns = [
 
     path('subscribe/email/', views.subscribe_email, name='subscribe_email'),
     path('subscribe/email/register/<str:token>/', views.subscribe_email_register, name='subscribe_email_register'),
+    path('subscribe/email/release/<str:token>/', views.subscribe_email_release, name='subscribe_email_release'),
     path('subscribe/email/done/', views.subscribe_email_done, name='subscribe_email_done'),
+    path('subscribe/email/release/done/', views.subscribe_email_release_done, name='subscribe_email_release_done'),
 
     path('posts/suggest/', views.posts_suggest, name='posts_suggest'),
     path('image/upload/', views.image_upload, name='image_upload'),

@@ -1,6 +1,6 @@
-import re
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.core.signing import dumps
 from django.db import models
 from django.shortcuts import resolve_url
 from django.template.loader import render_to_string
@@ -49,18 +49,17 @@ class Post(models.Model):
 
     def email_push(self, request):
         """記事をメールで通知"""
-        context = {
-            'post': self,
-        }
-        subject = render_to_string('nblog1/mail/send_latest_notify_subject.txt', context, request)
-        message = render_to_string('nblog1/mail/send_latest_notify_message.txt', context, request)
-
         from_email = settings.DEFAULT_FROM_EMAIL
-        bcc = [settings.DEFAULT_FROM_EMAIL]
         for mail_push in EmailPush.objects.filter(is_active=True):
-            bcc.append(mail_push.mail)
-        email = EmailMessage(subject, message, from_email, [], bcc)
-        email.send()
+            context = {
+                'post': self,
+                'token': dumps(mail_push.pk),
+            }
+            subject = render_to_string('nblog1/mail/send_latest_notify_subject.txt', context, request)
+            message = render_to_string('nblog1/mail/send_latest_notify_message.txt', context, request)
+            to = [mail_push]
+            email = EmailMessage(subject, message, from_email, to)
+            email.send()
 
     def browser_push(self):
         """記事をブラウザ通知"""
