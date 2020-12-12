@@ -1,5 +1,5 @@
 # django-narito-blog1
-https://narito.ninja/blog/ のブログ
+ブログ
 
 ## 動作環境
 Django2.2以上
